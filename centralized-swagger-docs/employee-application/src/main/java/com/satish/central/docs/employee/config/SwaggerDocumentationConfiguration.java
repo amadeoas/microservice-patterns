@@ -10,21 +10,21 @@ import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+
 /**
- * 
  * @author satish-s
- *
  */
 @Configuration
 @EnableSwagger2
 public class SwaggerDocumentationConfiguration {
 
-
 	ApiInfo apiInfo() {
 		return new ApiInfoBuilder().title("Employee REST CRUD operations API in Spring-Boot 2")
 				.description(
 						"Sample REST API for centalized documentation using Spring Boot and spring-fox swagger 2 ")
-				.termsOfServiceUrl("").version("0.0.1-SNAPSHOT").contact(new Contact("Satish Sharma", "https://github.com/hellosatish", "https://github.com/hellosatish")).build();
+				.termsOfServiceUrl("").version("0.0.1-SNAPSHOT").contact(new Contact("Satish Sharma", "https://github.com/hellosatish", "https://github.com/hellosatish"))
+				.build();
 	}
 
 	@Bean
@@ -33,6 +33,5 @@ public class SwaggerDocumentationConfiguration {
 				.apis(RequestHandlerSelectors.basePackage("com.satish.central.docs.employee.web.rest.resource")).build()
 	                .apiInfo(apiInfo());
 	}
-
 
 }

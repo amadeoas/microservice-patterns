@@ -1,7 +1,6 @@
 server:
   port: 9093
-  
- 
+
 eureka:
   instance:
     appname: documentation-application
@@ -11,7 +10,9 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka/
-      
+
 swagger: 
   config: 
     refreshrate: 5000
+  default:
+    url: /v2/api-docs

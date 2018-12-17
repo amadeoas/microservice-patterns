@@ -7,11 +7,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.satish.central.docs.config.swagger.ServiceDefinitionsContext;
 
+
 /**
- * 
  * @author satish sharma
+ * 
  * <pre>
- *  Controller to serve the JSON from our in-memory store. So that UI can render the API-Documentation	
+ *  Controller to serve the JSON from our in-memory store. So that UI can render the 
+ *  API-Documentation	
  * </pre>
  */
 @RestController
@@ -19,11 +21,17 @@ public class ServiceDefinitionController {
 	
 	@Autowired
 	private ServiceDefinitionsContext definitionContext;
-	
+
+
+	/**
+	 * @param serviceName the name of the service.
+	 * @return the description of the specified service.
+	 */
 	@GetMapping("/service/{servicename}")
-	public String getServiceDefinition(@PathVariable("servicename") String serviceName){
-		
-		return definitionContext.getSwaggerDefinition(serviceName);
-		
+	public String getServiceDefinition(
+	        @PathVariable("servicename")
+	        final String serviceName) {
+		return this.definitionContext.getSwaggerDefinition(serviceName);		
 	}
+
 }

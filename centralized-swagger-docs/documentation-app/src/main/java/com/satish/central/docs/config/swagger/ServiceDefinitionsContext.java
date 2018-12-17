@@ -10,38 +10,59 @@ import org.springframework.stereotype.Component;
 
 import springfox.documentation.swagger.web.SwaggerResource;
 
+
 /**
- * 
  * @author satish sharma
+ * 
  * <pre>
- *   	In-Memory store to hold API-Definition JSON
+ *   	In-Memory store to hold API-Definition JSONs.
  * </pre>
  */
 @Component
 @Scope(scopeName=ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class ServiceDefinitionsContext {
 	
-	private final ConcurrentHashMap<String,String> serviceDescriptions; 
+    /**
+     * Map of service name and service description.
+     */
+	private final ConcurrentHashMap<String, String> serviceDescriptions; 
 	 
-	 private ServiceDefinitionsContext(){
-		 serviceDescriptions = new ConcurrentHashMap<String, String>();
-	 }
-	 
-	 public void addServiceDefinition(String serviceName, String serviceDescription){
-		 serviceDescriptions.put(serviceName, serviceDescription);
-	 }
-	 
-	 public String getSwaggerDefinition(String serviceId){
-		 return this.serviceDescriptions.get(serviceId);
-	 }
-	 
-	 public List<SwaggerResource> getSwaggerDefinitions(){
-			return  serviceDescriptions.entrySet().stream().map( serviceDefinition -> {
-				 SwaggerResource resource = new SwaggerResource();
-				 resource.setLocation("/service/"+serviceDefinition.getKey());
-				 resource.setName(serviceDefinition.getKey());
-				 resource.setSwaggerVersion("2.0");	 
-				 return resource;
-			 }).collect(Collectors.toList());
-		 }
+
+	private ServiceDefinitionsContext() {
+		this.serviceDescriptions = new ConcurrentHashMap<>();
+	}
+
+    /**
+     * Adds the specified service as registered.
+     * 
+     * @param serviceName the name of the registered service.
+     * @param serviceDescription the description of the registered service.
+     */
+	public void addServiceDefinition(final String serviceName, final String serviceDescription) {
+		this.serviceDescriptions.put(serviceName, serviceDescription);
+	}
+
+	/**
+	 * @param serviceName the service name.
+	 * @return the description for the specified service name, if it's registered.
+	 */
+	public String getSwaggerDefinition(final String serviceName) {
+		return this.serviceDescriptions.get(serviceName);
+	}
+
+	/**
+	 * @return list of all the registered API service definitions.
+	 */
+	public List<SwaggerResource> getSwaggerDefinitions() {
+		return this.serviceDescriptions.entrySet().stream().map(serviceDefinition -> {
+		        final SwaggerResource resource = new SwaggerResource();
+
+			    resource.setLocation("/service/" + serviceDefinition.getKey());
+			    resource.setName(serviceDefinition.getKey());
+			    resource.setSwaggerVersion("2.0");	 
+
+			    return resource;
+			}).collect(Collectors.toList());
+	}
+
 }

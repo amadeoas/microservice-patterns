@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.satish.central.docs.person.db.entities.Person;
 import com.satish.central.docs.person.db.repository.PersonRepository;
 
+
 @RestController
 @RequestMapping(value="/person")
 public class PersonResource {
-
 	
 	//Ideally you shall be using Service classes
 	@Autowired
@@ -33,34 +33,41 @@ public class PersonResource {
 	}
 	
 	@GetMapping("/{personid}")
-	public ResponseEntity<Person> getPersonById(@PathVariable("personId") int personID){
-		Optional<Person> personInDB = personRepo.findById(personID);
-		if(personInDB.isPresent()){
+	public ResponseEntity<Person> getPersonById(
+	        @PathVariable("personId") final int personID) {
+		final Optional<Person> personInDB = personRepo.findById(personID);
+
+		if (personInDB.isPresent()) {
 			return ResponseEntity.ok(personInDB.get());
-		}else{
-			return new ResponseEntity<Person>(HttpStatus.NOT_FOUND);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 	
 	@PostMapping
-	public ResponseEntity<Person> storePerson(@RequestBody Person person ){
-		Person personInDB = personRepo.save(person);
-			return new ResponseEntity<Person>(personInDB,HttpStatus.CREATED);
+	public ResponseEntity<Person> storePerson(@RequestBody final Person person) {
+		final Person personInDB = this.personRepo.save(person);
+
+		return new ResponseEntity<>(personInDB,HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/{personId}")
-	public ResponseEntity<Person> updatePersonDetails(@PathVariable("personId") int personID,@RequestBody(required=true) Person personDataToBeUpdated ){
-		
-		 if(personID != personDataToBeUpdated.getId() ){	//Just to make sure we have same person_id in path param and body.
-			 return new ResponseEntity<Person>(HttpStatus.BAD_REQUEST);
+	public ResponseEntity<Person> updatePersonDetails(
+	        @PathVariable("personId") final int personID,
+	        @RequestBody(required=true) final Person personDataToBeUpdated) {
+		 if (personID != personDataToBeUpdated.getId()) {	//Just to make sure we have same person_id in path param and body.
+			 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		 }
-		 
-		Optional<Person> personInDB = personRepo.findById(personID);
-		if(personInDB.isPresent()){
-			Person person = personRepo.saveAndFlush(personDataToBeUpdated);
+
+		final Optional<Person> personInDB = this.personRepo.findById(personID);
+
+		if (personInDB.isPresent()) {
+			final Person person = this.personRepo.saveAndFlush(personDataToBeUpdated);
+
 			return ResponseEntity.ok(person);
-		}else{
-			return new ResponseEntity<Person>(HttpStatus.NOT_FOUND);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+
 }
