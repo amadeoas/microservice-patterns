@@ -1,5 +1,5 @@
-# Central Document Eureka Server
-A Spring Boot microservice, which acts a registry server of available microservice.
+# Documentation Apps
+A Spring Boot microservice, which provides a central point to obtain the documentation of all the microservices API registered.
 
 
 ## Build Process
@@ -12,7 +12,7 @@ mvn package
 Build the Docker image from running the package command above by executing the code below.
 
 ```bash
-docker build -t central-docs-eureka-server .
+docker build -t documentation-apps .
 ```
 
 You can see the list of all the docker images on your system using the command below.
@@ -20,12 +20,12 @@ You can see the list of all the docker images on your system using the command b
 ```bash
 docker image ls
 ```
-The command above should show the container 'central-docs-eureka-server' within the presented list.
+The command above should show the container 'documentation-apps' within the presented list.
 
 
 ## Run Docker Image
 Once it has been built a docker image, see steps above under 'Build Process', you can run it using docker run command like:
 
 ```bash
-docker run -p 5000:8761 central-docs-eureka-serve
+docker run -p 5000:9093 documentation-apps
 ```
