@@ -29,3 +29,15 @@ Once it has been built a docker image, see steps above under 'Build Process', yo
 ```bash
 docker run -p 5000:9093 documentation-apps
 ```
+
+You can use the -d option in docker run command to run the container in the background, and gives you the container ID:
+
+```bash
+docker run -d -p 5000:8080 documentation-apps
+```
+
+A list of all containers running in the system can be shown by executing the following command:
+
+```bash
+docker container ls
+```
