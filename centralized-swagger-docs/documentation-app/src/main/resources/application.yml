@@ -13,6 +13,6 @@ eureka:
 
 swagger: 
   config: 
-    refreshrate: 5000
+    refreshrate: 10000
   default:
     url: /v2/api-docs

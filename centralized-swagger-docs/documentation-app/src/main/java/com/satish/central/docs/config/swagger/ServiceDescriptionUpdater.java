@@ -73,7 +73,7 @@ public class ServiceDescriptionUpdater {
 			    }
 			} else {
 				final ServiceInstance instance = serviceInstances.get(0);
-				final String swaggerURL = getSwaggerURL( instance);
+				final String swaggerURL = getSwaggerURL(instance);
 				final Optional<Object> jsonData 
 				        = getSwaggerDefinitionForAPI(serviceName, swaggerURL);
 
@@ -113,7 +113,7 @@ public class ServiceDescriptionUpdater {
 	private String getSwaggerURL(final ServiceInstance instance) {
 		final String swaggerURL = instance.getMetadata().get(KEY_SWAGGER_URL);
 
-		return swaggerURL != null ? (instance.getUri() + swaggerURL) 
+		return (swaggerURL != null) ? (instance.getUri() + swaggerURL) 
 		        : (instance.getUri() + this.defaultSwaggerUrl);
 	}
 
@@ -125,12 +125,16 @@ public class ServiceDescriptionUpdater {
 	private Optional<Object> getSwaggerDefinitionForAPI(
 	        final String serviceName, 
 	        final String url) {
-		logger.debug("Accessing the SwaggerDefinition JSON for Service with name '{}', and URL '{}'", 
+		logger.debug("Accessing the Swagger definition JSON for service with name '{}', and URL '{}'...", 
 		        serviceName, url);
 		try {
 			final Object jsonData = this.template.getForObject(url, Object.class);
+			final Optional<Object> optional = Optional.of(jsonData);
 
-			return Optional.of(jsonData);
+			logger.debug("Swagger definition JSON for service with name '{}', and URL '{}' was successfully obtained", 
+			        serviceName, url);
+
+			return optional;
 		} catch (final RestClientException rce) {
 			logger.error("Error while getting service definition for service with name '{}': {}", 
 			        serviceName, rce.getMessage(), rce);
