@@ -9,7 +9,7 @@ Build the application by executing code below.
 mvn package
 ```
 
-Build the Docker image by executing the code below.
+Build the Docker image from running the package command above by executing the code below.
 
 ```bash
 docker build -t central-docs-eureka-server .
@@ -20,8 +20,10 @@ You can see the list of all the docker images on your system using the command b
 ```bash
 docker image ls
 ```
+The command above should show the container 'central-docs-eureka-server' within the presented list.
 
-## Running the docker image
+
+## Run Docker Image
 Once it has been built a docker image, see steps above under 'Build Process', you can run it using docker run command like:
 
 ```bash
