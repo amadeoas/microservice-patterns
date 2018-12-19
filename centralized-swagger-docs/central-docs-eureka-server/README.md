@@ -2,6 +2,13 @@
 A Spring Boot microservice, which acts a registry server of available microservice.
 
 
+## Usage
+To access the list of all the registered services use the following URL.
+
+```
+localhost:8761
+```
+
 ## Build Process
 Build the application by executing code below.
 

@@ -2,6 +2,25 @@
 A Spring Boot microservice, which provides a central point to obtain the documentation of all the microservices API registered.
 
 
+## Usage
+To access the documentation of all the registered services use the following URL.
+
+```
+localhost:9093
+```
+
+To access the documentation of this service in JSON format use the following URL.
+
+```
+localhost:9093/v2/api-docs
+```
+
+To access the documentation of an specified registered service use the following URL, where '__servicename__' is the name of the service as it is in the registry.
+
+```
+localhost:9093/service/{servicename}
+```
+
 ## Build Process
 Build the application by executing code below.
 
