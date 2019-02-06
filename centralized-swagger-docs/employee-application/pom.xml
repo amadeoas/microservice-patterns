@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>employee-application</name>
-	<description>Eureka server </description>
+	<description>Eureka server</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -88,6 +88,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>

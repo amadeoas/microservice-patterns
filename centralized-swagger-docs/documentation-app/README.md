@@ -9,6 +9,12 @@ To access the documentation of all the registered services use the following URL
 localhost:9093
 ```
 
+or
+
+```
+localhost:9093/swagger-ui.html
+```
+
 To access the documentation of this service in JSON format use the following URL.
 
 ```
@@ -31,7 +37,7 @@ mvn package
 Build the Docker image from running the package command above by executing the code below.
 
 ```bash
-docker build -t documentation-apps .
+docker build -t documentation-app .
 ```
 
 You can see the list of all the docker images on your system using the command below.
@@ -39,20 +45,20 @@ You can see the list of all the docker images on your system using the command b
 ```bash
 docker image ls
 ```
-The command above should show the container 'documentation-apps' within the presented list.
+The command above should show the container 'documentation-app' within the presented list.
 
 
 ## Run Docker Image
 Once it has been built a docker image, see steps above under 'Build Process', you can run it using docker run command like:
 
 ```bash
-docker run -p 5000:9093 documentation-apps
+docker run -p 5000:9093 documentation-app
 ```
 
 You can use the -d option in docker run command to run the container in the background, and gives you the container ID:
 
 ```bash
-docker run -d -p 5000:8080 documentation-apps
+docker run -d -p 5000:8080 documentation-app
 ```
 
 A list of all containers running in the system can be shown by executing the following command:

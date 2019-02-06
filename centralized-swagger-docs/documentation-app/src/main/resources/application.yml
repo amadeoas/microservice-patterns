@@ -3,7 +3,7 @@ server:
 
 eureka:
   instance:
-    appname: documentation-application
+    appname: documentation-app
   client:
     enabled: true
     register-with-eureka: true
@@ -11,8 +11,8 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka/
 
-swagger: 
-  config: 
+swagger:
+  config:
     refreshrate: 10000
   default:
     url: /v2/api-docs

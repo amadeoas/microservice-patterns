@@ -1,6 +1,8 @@
 # Start with a base image containing Java runtime
 FROM openjdk:8-jdk-alpine
 
+LABEL version="1.0"
+LABEL description="This is the central web documentation"
 # Add Maintainer Info
 LABEL maintainer="aas@gmail.com"
 
@@ -11,10 +13,10 @@ VOLUME /tmp
 EXPOSE 9093
 
 # The application's jar file
-ARG JAR_FILE=target/documentation-apps-0.0.1-SNAPSHOT.jar
+ARG JAR_FILE=target/documentation-app-0.0.1-SNAPSHOT.jar
 
 # Add the application's jar to the container
-ADD ${JAR_FILE} documentation-apps-0.0.1-SNAPSHOT.jar
+ADD ${JAR_FILE} /documentation-app.jar
 
-# Run the jar file 
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/documentation-apps-0.0.1-SNAPSHOT.jar"]
+# Run the jar file
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/documentation-app.jar"]
