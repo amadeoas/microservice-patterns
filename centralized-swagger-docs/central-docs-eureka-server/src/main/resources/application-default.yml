@@ -1,6 +1,9 @@
+project:
+   version: ^project.version^
+
 spring:
   application:
-    name: register-app
+    name: ^project.artifactId^
 
 server:
   port: 8761

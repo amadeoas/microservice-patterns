@@ -1,6 +1,16 @@
+project:
+   version: ^project.version^
+   title: Person REST CRUD operations API in Spring-Boot 2
+   description: Sample REST API for centalized documentation using Spring Boot and spring-fox swagger 2
+   termsServiceUrl: 
+   contact:
+     name: Satish Sharma
+     url: https://github.com/hellosatish
+     email: https://github.com/hellosatish
+
 spring:
   application:
-    name: person-application
+    name: ^project.artifactId^
   datasource:
     url: jdbc:h2:mem:person-db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     driver-class-name: org.h2.Driver
@@ -24,7 +34,7 @@ logging:
 
 eureka:
   instance:
-    appname: person-application
+    appname: ^project.artifactId^
   client:
     enabled: true
     register-with-eureka: true

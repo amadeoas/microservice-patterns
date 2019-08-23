@@ -1,6 +1,9 @@
+project:
+   version: ^project.version^
+
 spring:
   application:
-    name: register-app
+    name: ^project.artifactId^
 
 server:
   port: 8761
@@ -11,10 +14,6 @@ logging:
     com.netflix.discovery: false
 
 eureka:
-  instance:
-    hostname: register-app
   client:
     fetch-registry: false
     register-with-eureka: false
-    serviceUrl:
-      defaultZone: http://register-app:8761/eureka

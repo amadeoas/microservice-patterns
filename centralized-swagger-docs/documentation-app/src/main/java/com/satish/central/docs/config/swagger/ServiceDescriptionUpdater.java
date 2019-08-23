@@ -30,10 +30,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class ServiceDescriptionUpdater {
 
 	private static final Logger logger = LoggerFactory.getLogger(ServiceDescriptionUpdater.class);
+    private static final String KEY_SWAGGER_URL="swagger_url";
 
-	@Value("${swagger.default.url}")
+    @Value("${swagger.default.url}")
 	private final String defaultSwaggerUrl = null;
-	private static final String KEY_SWAGGER_URL="swagger_url";
 	@Value("${eureka.instance.appname}")
 	private final String ownAppName = null;
 
@@ -54,7 +54,7 @@ public class ServiceDescriptionUpdater {
     /**
      * Refreshes the Swagger configuration.
      */
-	@Scheduled(fixedDelayString= "${swagger.config.refreshrate}")
+	@Scheduled(fixedDelayString = "${swagger.config.refreshrate}")
 	public void refreshSwaggerConfigurations() {
 		logger.debug("Refreshing service definition context...");
 		this.discoveryClient.getServices().stream().forEach(serviceName -> {

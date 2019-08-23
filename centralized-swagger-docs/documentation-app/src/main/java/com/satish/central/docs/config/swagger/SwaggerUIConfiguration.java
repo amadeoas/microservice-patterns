@@ -30,17 +30,27 @@ public class SwaggerUIConfiguration {
 	private ServiceDefinitionsContext definitionContext;
 
 
+	/**
+	 * @return the REST template.
+	 */
 	@Bean
-	public RestTemplate configureTempalte() {
+	public RestTemplate configureTemplate() {
 		return new RestTemplate();
 	}
-	
+
+	/**
+	 * Provides the Swagger resource provider associated with this application.
+	 * 
+	 * @param defaultResourcesProvider the provider of the resources to use.
+	 * @param template the REST template.
+	 * @return the resource provider.
+	 */
     @Primary
     @Bean
     @Lazy
     public SwaggerResourcesProvider swaggerResourcesProvider(
             final InMemorySwaggerResourcesProvider defaultResourcesProvider, 
-            final RestTemplate temp) {
+            final RestTemplate template) {
         return () -> {
             final List<SwaggerResource> resources = new ArrayList<>(defaultResourcesProvider.get());
 

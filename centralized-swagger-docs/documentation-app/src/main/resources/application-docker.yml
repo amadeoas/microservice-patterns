@@ -1,6 +1,9 @@
+project:
+   version: ^project.version^
+
 spring:
   application:
-    name: documentation-app
+    name: ^project.artifactId^
 
 server:
   port: 9093
@@ -12,7 +15,7 @@ logging:
 
 eureka:
   instance:
-    appname: documentation-app
+    appname: ^project.artifactId^
   client:
     enabled: true
     register-with-eureka: true
