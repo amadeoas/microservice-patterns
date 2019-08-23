@@ -9,8 +9,10 @@ LABEL maintainer="aas@gmail.com"
 # Add a volume pointing to /tmp
 VOLUME /tmp
 
-# Make port 9091 available to the world outside this container
-EXPOSE 9091
+# Make port 9091 available to the world outside this container (private and public mapping)
+EXPOSE 9091:9091
+
+ENV SPRING_PROFILES_ACTIVE docker
 
 # The application's jar file
 ARG JAR_FILE=target/person-application-0.0.1-SNAPSHOT.jar

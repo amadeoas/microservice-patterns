@@ -1,0 +1,54 @@
+# centralized-swagger-docs/docker-compose.yml
+version: '3'
+services:
+  documentation-app:
+    build: ./documentation-app
+    image: documentation-app:latest
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    ports:
+      - "9093:9093"
+    links:
+      - register-app
+    networks:
+      - backend
+    depends_on:
+      - register-app
+  person-application:
+    build: ./person-application
+    image: person-application:latest
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    ports:
+      - "9091:9091"
+    links:
+      - register-app
+    networks:
+      - backend
+    depends_on:
+      - register-app
+  employee-application:
+    build: ./employee-application
+    image: employee-application:latest
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    ports:
+      - "9092:9092"
+    links:
+      - register-app
+    networks:
+      - backend
+    depends_on:
+      - register-app
+  register-app:
+    build: ./central-docs-eureka-server
+    image: register-app:latest
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    ports:
+      - "8761:8761"
+    networks:
+      - backend
+networks:
+  backend:
+    driver: "bridge"

@@ -1,11 +1,10 @@
 spring:
-  application:
-    name: person-application
   datasource:
     url: jdbc:h2:mem:person-db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     driver-class-name: org.h2.Driver
     username: sa
     password: sa
+
   jpa:
     show-sql: true
     hibernate:
@@ -13,6 +12,8 @@ spring:
   h2:
     console:
       path: /db-console
+  application:
+    name: person-application
 
 server:
   port: 9091
@@ -25,6 +26,8 @@ logging:
 eureka:
   instance:
     appname: person-application
+    leaseRenewalIntervalInSeconds: 5
+    preferIpAddress: true
   client:
     enabled: true
     register-with-eureka: true

@@ -9,8 +9,10 @@ LABEL maintainer="aas@gmail.com"
 # Add a volume pointing to /tmp
 VOLUME /tmp
 
-# Make port 8761 available to the world outside this container
-EXPOSE 8761
+# Make port 8761 available to the world outside this container (private and public mapping)
+EXPOSE 8761:8761
+
+ENV SPRING_PROFILES_ACTIVE docker
 
 # The application's jar file
 ARG JAR_FILE=target/central-docs-eureka-server-0.0.1-SNAPSHOT.jar

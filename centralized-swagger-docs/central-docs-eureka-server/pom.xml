@@ -8,8 +8,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>central-docs-eureka-server</name>
-	<description>Eureka server </description>
+	<name>register-app</name>
+	<description>Eureka server</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

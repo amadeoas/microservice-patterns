@@ -56,9 +56,10 @@ public class ServiceDescriptionUpdater {
      */
 	@Scheduled(fixedDelayString= "${swagger.config.refreshrate}")
 	public void refreshSwaggerConfigurations() {
-		logger.debug("Refreshing Service Definition Context...");		
+		logger.debug("Refreshing service definition context...");
 		this.discoveryClient.getServices().stream().forEach(serviceName -> {
-			logger.debug("Attempting service definition refresh for service name '{}'", serviceName);
+			logger.debug("Attempting service definition refresh for service name '{}'", 
+			        serviceName);
 
 			final List<ServiceInstance> serviceInstances 
 			        = this.discoveryClient.getInstances(serviceName);
@@ -81,13 +82,15 @@ public class ServiceDescriptionUpdater {
 					final String content = getJSON(serviceName, jsonData.get());
 
 					this.definitionContext.addServiceDefinition(serviceName, content);
+		            logger.debug("Service '{}' definition was refreshed", serviceName);
 				} else {
-					logger.error("Error, skipping service with name '{}': Could not get Swagegr definition from API", 
+					logger.error("Error: Skipping service with name '{}' because it could not get " 
+					            + "Swagegr definition from API", 
 					        serviceName);
 				}
-				logger.info("Service definition Context Refreshed at {}", LocalDate.now());
 			}
 		});
+        logger.info("Service definition context was refreshed at {}", LocalDate.now());
 	}
 
     /**

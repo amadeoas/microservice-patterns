@@ -1,5 +1,14 @@
+spring:
+  application:
+    name: documentation-app
+
 server:
   port: 9093
+
+logging:
+  level:
+    com.netflix.eureka: true
+    com.netflix.discovery: true
 
 eureka:
   instance:
@@ -9,7 +18,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://register-app:8761/eureka/
 
 swagger:
   config:

@@ -1,0 +1,36 @@
+  spring:
+    datasource:
+      url: jdbc:h2:mem:employee-db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+      driver-class-name: org.h2.Driver
+      username: sa
+      password: sa
+
+    jpa:
+      show-sql: true
+      hibernate:
+        ddl-auto: create-drop
+    h2:
+      console:
+        path: /db-console
+    application:
+      name: employee-application
+
+  server:
+    port: 9091
+
+  logging:
+    level:
+      com.netflix.eureka: OFF
+      com.netflix.discovery: OFF
+
+  eureka:
+    instance:
+      appname: employee-application
+      leaseRenewalIntervalInSeconds: 5
+      preferIpAddress: true
+    client:
+      enabled: true
+      register-with-eureka: true
+      fetch-registry: true
+      service-url:
+        defaultZone: http://register-app:8761/eureka/
