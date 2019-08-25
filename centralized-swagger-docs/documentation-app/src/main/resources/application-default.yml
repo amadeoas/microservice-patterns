@@ -22,4 +22,4 @@ swagger:
   config:
     refreshrate: 10000
   default:
-    url: /v2/api-docs
+    url: /api-docs

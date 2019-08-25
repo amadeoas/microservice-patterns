@@ -38,6 +38,8 @@ public class SwaggerDocumentationConfiguration {
     private String termsServiceUrl;
     @Value("${project.version}")
     private String version;
+    @Value("${server.servlet.context-path}")
+    private String contextPath;
 
     @Autowired
     private BuildProperties buildProperties;
@@ -46,10 +48,11 @@ public class SwaggerDocumentationConfiguration {
 
 
     public void showInfo() {
-        LOGGER.info("Application \"{}\", version {}, (built on \"{}\", active profile \"{}\", artifact ID \"{}\", and group \"{}\")", 
+        LOGGER.info("Application \"{}\", version {}, (built on \"{}\", active profile \"{}\", artifact ID \"{}\", group \"{}\", and contect-path \"{}\")", 
                 this.buildProperties.getName(), this.buildProperties.getVersion(), 
                 this.buildProperties.getTime(), getActiveProfile(), 
-                this.buildProperties.getArtifact(), this.buildProperties.getGroup());
+                this.buildProperties.getArtifact(), this.buildProperties.getGroup(), 
+                this.contextPath);
     }
 
     ApiInfo apiInfo() {

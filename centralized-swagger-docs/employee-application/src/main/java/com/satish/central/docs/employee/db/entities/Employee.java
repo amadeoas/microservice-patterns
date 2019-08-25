@@ -19,41 +19,41 @@ public class Employee {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int employeeId;
-	private String employeeFirstName;
-	private String employeeLastName;
+	private int id;
+	private String firstName;
+	private String lastName;
 	private String email;
 
 	
-	public int getEmployeeId() {
-        return employeeId;
+	public int getId() {
+        return this.id;
     }
 
-	public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
+	public void setId(final int id) {
+        this.id = id;
     }
 
 	public String getEmployeeFirstName() {
-        return employeeFirstName;
+        return this.firstName;
     }
 
-	public void setEmployeeFirstName(String employeeFirstName) {
-        this.employeeFirstName = employeeFirstName;
+	public void setEmployeeFirstName(final String firstName) {
+        this.firstName = firstName;
     }
 
-	public String getEmployeeLastName() {
-        return employeeLastName;
+	public String getLastName() {
+        return this.lastName;
     }
 
-	public void setEmployeeLastName(String employeeLastName) {
-        this.employeeLastName = employeeLastName;
+	public void setLastName(final String lastName) {
+        this.lastName = lastName;
     }
 
 	public String getEmail() {
-        return email;
+        return this.email;
     }
 
-	public void setEmail(String email) {
+	public void setEmail(final String email) {
         this.email = email;
     }
 

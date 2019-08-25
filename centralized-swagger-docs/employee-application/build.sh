@@ -1,2 +1,2 @@
 #!/bin/sh
-docker build --tag=employee-appliction:latest .
+docker build --tag=employee-application:latest .

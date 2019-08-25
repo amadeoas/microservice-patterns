@@ -26,6 +26,8 @@ spring:
 
 server:
   port: 9092
+  servlet:
+     context-path: /v1
 
 logging:
   level:
@@ -38,6 +40,6 @@ eureka:
   client:
     enabled: true
     register-with-eureka: true
-    fetch-registry: true
+    fetch-registry: false
     service-url:
       defaultZone: http://register-app:8761/eureka/
